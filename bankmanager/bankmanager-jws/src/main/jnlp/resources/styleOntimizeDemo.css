@@ -1,0 +1,55 @@
+.title_text {
+	color: #7b7a79;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 9pt;
+	font-weight: bold;
+}
+
+.center {
+	text-align : center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+}
+
+a.text_link  {
+	color: #7b7a79;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 8pt;
+}
+
+a.text_link:hover  {
+	color: #ffae14;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 8pt;
+}
+a.text_link:visited  {
+	color: #d5d2cb;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 8pt;
+}
+
+
+.dark_text {
+	color: #c5c5c5;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 8pt;
+}
+
+.table_header  {
+	color: #B7AE9C;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 9pt;
+	text-align: left;
+}
+
+
+.text {
+	color: #7b7a79;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 8pt;
+}
+

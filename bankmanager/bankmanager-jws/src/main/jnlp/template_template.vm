@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="$jnlpspec" codebase="*">
+	<information>
+		#if($project.Name) 
+			<title>$project.Name</title>
+		#end 
+		#if($project.Organization.Name)
+			<vendor>$project.Organization.Name</vendor>
+		#end 
+		#if($project.Url) 
+			<homepage href="$project.Url" />
+		#end 
+		#if($project.Description) 
+			<description>$project.Description</description>
+		#end
+		#if($offlineAllowed) 
+			<offline-allowed />
+		#end 
+		<icon kind="splash" href="splash.png" />
+		<icon kind="default" href="ontimize256.png"/>
+		<icon kind="shortcut" href="ontimize16.png" width="16" height="16" />
+		<icon kind="shortcut" href="ontimize32.png" width="32" height="32" />
+		<icon kind="shortcut" href="ontimize48.png" width="48" height="48" />
+		<icon kind="shortcut" href="ontimize64.png" width="64" height="64" />
+		<icon kind="shortcut" href="ontimize256.png" width="256" height="256" />
+		<shortcut online="true">
+			<desktop />
+			<menu submenu="MenuName" />
+		</shortcut>
+	</information>
+	#if($allPermissions) 
+	<security>
+	  <all-permissions />
+	</security>
+	#end
+	<resources>
+		<java version="1.7+" initial-heap-size="32m" max-heap-size="256m" />
+		$dependencies 
+	</resources>
+	<application-desc main-class="$mainClass">
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+	</application-desc>
+</jnlp>

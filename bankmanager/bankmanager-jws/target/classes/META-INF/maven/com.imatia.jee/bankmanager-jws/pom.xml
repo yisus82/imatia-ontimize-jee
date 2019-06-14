@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.imatia.jee</groupId>
+		<artifactId>bankmanager</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>bankmanager-jws</artifactId>
+	<name>${project.groupId}:${project.artifactId}</name>
+
+
+	<build>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+	</build>
+
+	<!-- =========================================================== -->
+	<!-- Properties -->
+	<!-- =========================================================== -->
+	<properties>
+		<!-- Project properties -->
+		<project.out.name>${server-context}</project.out.name> <!-- Final project name -->
+		<mainclass>${mainclasslauncher}</mainclass> <!-- Client launcher main class -->
+		<!-- =========================================================== -->
+		<!-- Webstart Maven Plugin Properties -->
+		<!-- =========================================================== -->
+		<sign_server_url>${signserverurl}</sign_server_url> <!-- Remote Signer (Not modify) -->
+		<jarsigner_storepass>${jarsignerstorepass}</jarsigner_storepass> <!-- The sign pass for jars -->
+		<jarsigner_alias>${jarsigneralias}</jarsigner_alias> <!-- Alias for the jarsigner -->
+		<jnlpLaunch>${jnlp_launch}</jnlpLaunch><!-- Name of the jnlp (Not modify) -->
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>bankmanager-client</artifactId>
+		</dependency>
+	</dependencies>
+	<!-- =========================================================== -->
+	<!-- Profiles -->
+	<!-- =========================================================== -->
+
+	<profiles>
+		<profile>
+			<id>generate-localhost</id>
+			<properties>
+				<jnlpCodebase_url>${jnlpBaseUrl}/${server-context}</jnlpCodebase_url>
+				<jnlptunnelingdebug>${jnlptundebug}</jnlptunnelingdebug>
+			</properties>
+			<build>
+				<resources>
+					<resource>
+						<filtering>true</filtering>
+						<directory>src/main</directory>
+					</resource>
+				</resources>
+				<plugins>
+					<plugin>
+						<groupId>com.imatia.maven.plugin</groupId>
+						<artifactId>imatia-webstart-plugin</artifactId>
+						<version>${imatia.webstart.version}</version>
+						<executions>
+							<execution>
+								<id>1</id>
+								<phase>package</phase>
+								<goals>
+									<goal>jnlp-inline</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<attachArchive>true</attachArchive>
+							<resourcesDirectory>${project.basedir}/src/main/jnlp/resources</resourcesDirectory>
+							<unsignAlreadySignedJars>true</unsignAlreadySignedJars>
+							<outputJarVersions>false</outputJarVersions>
+							<includeIndexList>true</includeIndexList>
+							<updateManifestEntries>
+								<Permissions>all-permissions</Permissions>
+								<Codebase>*</Codebase>
+								<Trusted-Library>true</Trusted-Library>
+								<Application-Name>${project.out.name}</Application-Name>
+								<Trusted-Only>true</Trusted-Only>
+							</updateManifestEntries>
+							<jnlp>
+								<inputTemplateResourcePath>${project.basedir}/src/main/jnlp</inputTemplateResourcePath>
+								<outputFile>${jnlpLaunch}</outputFile>
+								<inputTemplate>template.vm</inputTemplate>
+								<mainClass>${mainclass}</mainClass>
+								<inputJnlpTemplateTemplateResourcePath>${project.basedir}/src/main/jnlp</inputJnlpTemplateTemplateResourcePath>
+								<inputJnlpTemplateTemplate>template_template.vm</inputJnlpTemplateTemplate>
+							</jnlp>
+							<sign>
+								<serverUrl>${sign_server_url}</serverUrl>
+								<applicationName>${project.out.name}</applicationName>
+								<keystore></keystore>
+								<storepass></storepass>
+								<alias></alias>
+								<keypass></keypass>
+								<verify>false</verify>
+								<keystoreConfig>
+									<delete>false</delete>
+									<gen>false</gen>
+								</keystoreConfig>
+							</sign>
+							<pack200>
+								<enabled>true</enabled>
+							</pack200>
+							<gzip>true</gzip>
+							<verbose>true</verbose>
+							<makeArchive>true</makeArchive>
+							<excludeJars>false</excludeJars>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.codehaus.mojo</groupId>
+								<artifactId>keytool-api-1.7</artifactId>
+								<version>${keytool-api}</version>
+							</dependency>
+							<dependency>
+								<groupId>org.codehaus.mojo</groupId>
+								<artifactId>webstart-pack200-impl</artifactId>
+								<version>${webstart.impl.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<configuration>
+							<encoding>${project.build.sourceEncoding}</encoding>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
