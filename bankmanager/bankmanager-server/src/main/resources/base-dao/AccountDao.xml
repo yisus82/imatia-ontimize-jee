@@ -12,4 +12,18 @@
 		<Column>ACCOUNTID</Column>
 	</UpdateKeys>
 	<GeneratedKey>ACCOUNTID</GeneratedKey>
+	<Queries>
+		<Query id="ACCOUNTBALANCE">
+			<Sentence>
+               <![CDATA[
+               SELECT
+                  #COLUMNS# 
+               FROM
+                  VACCOUNTBALANCE
+               #WHERE#
+               #ORDER#
+            ]]>
+         </Sentence>
+		</Query>
+	</Queries>
 </JdbcEntitySetup>

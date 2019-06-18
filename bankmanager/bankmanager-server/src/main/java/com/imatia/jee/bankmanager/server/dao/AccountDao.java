@@ -23,6 +23,7 @@ public class AccountDao extends OntimizeJdbcDaoSupport {
 	public static final String ATTR_ENDDATE = "ENDDATE";
 	public static final String ATTR_INTERESRATE = "INTERESRATE";
 	public static final String ATTR_ACCOUNTTYP = "ACCOUNTTYP";
+	public static final String QUERY_VACCOUNTBALANCE = "ACCOUNTBALANCE";
 
 	public AccountDao() {
 		super();

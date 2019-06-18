@@ -12,4 +12,26 @@
 		<Column>CUSTOMERACCOUNTID</Column>
 	</UpdateKeys>
 	<GeneratedKey>CUSTOMERACCOUNTID</GeneratedKey>
+	<Queries>
+		<Query id="CUSTOMERACCOUNT">
+			<AmbiguousColumns>
+				<AmbiguousColumn name="CUSTOMERID" prefix="CA"
+					databaseName="CUSTOMERID" />
+				<AmbiguousColumn name="ACCOUNTID" prefix="CA"
+					databaseName="ACCOUNTID" />
+			</AmbiguousColumns>
+			<Sentence>
+               <![CDATA[
+               SELECT
+                  #COLUMNS# 
+               FROM
+                  ${mainschema}.CUSTOMERACCOUNTS AS CA
+                  INNER JOIN ${mainschema}.CUSTOMERS AS CU ON CA.CUSTOMERID = CU.CUSTOMERID
+                  INNER JOIN ${mainschema}.ACCOUNTS AS A ON CA.ACCOUNTID = A.ACCOUNTID
+               #WHERE#
+               #ORDER#
+            ]]>
+         </Sentence>
+		</Query>
+	</Queries>
 </JdbcEntitySetup>
