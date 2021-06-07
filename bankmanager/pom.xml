@@ -57,7 +57,7 @@
 
 		<javassist.version>3.18.0.GA</javassist.version>
 		<junit.version>4.13.1</junit.version>
-		<logback.version>1.0.13</logback.version>
+		<logback.version>1.2.0</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
 		<apache-poi.version>3.9</apache-poi.version>
 		<apache-ooxml-schemas.version>1.1</apache-ooxml-schemas.version>
