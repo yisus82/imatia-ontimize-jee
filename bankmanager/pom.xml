@@ -59,7 +59,7 @@
 		<junit.version>4.13.1</junit.version>
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
-		<apache-poi.version>3.9</apache-poi.version>
+		<apache-poi.version>4.1.1</apache-poi.version>
 		<apache-ooxml-schemas.version>1.1</apache-ooxml-schemas.version>
 		<apache-dom4j.version>1.6.1</apache-dom4j.version>
 		<xmlbeans.version>2.4.0</xmlbeans.version>
